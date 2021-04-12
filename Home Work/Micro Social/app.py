@@ -1,4 +1,4 @@
-from data import users
+from social_data import users
 from math import ceil
 from os import system
 
@@ -18,7 +18,7 @@ page_total = ceil(len(users) / per_page)
 page_min = ( len(users) ) - ( len(users) ) + 1
 
 while True:
-    system('cls')
+    system('clear')
 
     start_i = (current_page - 1) * per_page
     end_i = start_i + per_page
@@ -59,4 +59,5 @@ while True:
         if current_page > page_total:
             current_page = page_total
     elif enter == 'exit':
+        system('clear')
         break
