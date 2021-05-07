@@ -1,24 +1,24 @@
 class Container:
 
-    def __init__(self, first=None, second=None):
+    def __init__(self, first=0, second=0):
         self.first = first
         self.second = second
+        if first > second:
+            self.first = second
+            self.second = first
 
     def __str__(self):
-        if self.first != None and self.second != None:
-            if self.first >= self.second:
-                return f"[{self.first},{self.second}]"
-            elif self.second >= self.first:
-                return f"[{self.second},{self.first}]"
-        elif self.first == None and self.second != None:
+        if self.first != 0 and self.second != 0:
+            return f"[{self.first},{self.second}]"
+        elif self.first == 0 and self.second != 0:
             return f"[{self.second}]"
-        elif self.first != None and self.second == None:
+        elif self.first != 0 and self.second == 0:
             return f"[{self.first}]"
         else:
-            return f"[]"
+            return '[]'
 
-    def __eq__(self, other_container):
-        if self.first == other_container.first and self.second == other_container.second:
+    def __eq__(self, other):
+        if self.first == other.first and self.second == other.second:
             return True
         else:
             return False
@@ -26,8 +26,10 @@ class Container:
 c1 = Container()
 c2 = Container(10)
 c3 = Container(10, 100)
+c4 = Container(100, 10)
 
 print(c1)
 print(c2)
 print(c3)
-print(c2 == c3)
+print(c4)
+print(c3 == c4)
