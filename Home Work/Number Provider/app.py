@@ -10,3 +10,7 @@ provider = NumberProvider()
 provider.whenPositive(positiveAction)
 provider.whenNegative(negativeAction)
 provider.start()
+
+# Ответы:
+# AttributeError - ошибка в аргументе, отсутсвует positiveCB
+# Ошибка исчезла потому что в метод whenPositive была передана функция positiveAction
