@@ -12,7 +12,7 @@ class Directory:
         return f"Dir {self.name:15}\n{content}"
     
     def pasteFile(self, file):
-        if file != self.files:
+        if file not in self.files:
             self.files.append(file)
     
     def deleteFile(self, file):
@@ -44,6 +44,7 @@ photos = Directory('Photos')
 photos.pasteFile(File('summer_1.jpg'))
 photos.pasteFile(File('summer_2.png'))
 photos.pasteFile(File('summer_3.jpeg'))
+photos.pasteFile(File('summer_2.png'))
 print(photos)
 
 photos.deleteFile(File('summer_1.jpg'))
