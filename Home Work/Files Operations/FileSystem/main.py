@@ -16,7 +16,9 @@ class Directory:
             self.files.append(file)
     
     def deleteFile(self, file):
-        self.files.remove(file)
+        for f in self.files:
+            if f == file:
+                self.files.remove(file)
 
 class File:
     def __init__(self, name):
@@ -24,13 +26,25 @@ class File:
 
     def __str__(self):
         return f"\tFile {self.name:15}\n"
+    
+    def __eq__(self, other):
+        if type(other) == File:
+            if self.name == other.name:
+                return True
+            else:
+                return False
+        else:
+            if self.name == other:
+                return True
+            else:
+                return False
 
 photos = Directory('Photos')
 
-photos.pasteFile('summer_1.jpg')
-photos.pasteFile('summer_2.png')
-photos.pasteFile('summer_3.jpeg')
+photos.pasteFile(File('summer_1.jpg'))
+photos.pasteFile(File('summer_2.png'))
+photos.pasteFile(File('summer_3.jpeg'))
 print(photos)
 
-photos.deleteFile('summer_1.jpg')
+photos.deleteFile(File('summer_1.jpg'))
 print(photos)
