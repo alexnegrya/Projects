@@ -10,6 +10,13 @@ class Directory:
         for file in self.files:
             content += str(file) + ' '
         return f"Dir {self.name:15}\n{content}"
+    
+    def pasteFile(self, file):
+        if file != self.files:
+            self.files.append(file)
+    
+    def deleteFile(self, file):
+        self.files.remove(file)
 
 class File:
     def __init__(self, name):
@@ -19,7 +26,11 @@ class File:
         return f"\tFile {self.name:15}\n"
 
 photos = Directory('Photos')
-photos.files.append('summer_1.jpg')
-photos.files.append('summer_2.png')
-photos.files.append('summer_3.jpeg')
+
+photos.pasteFile('summer_1.jpg')
+photos.pasteFile('summer_2.png')
+photos.pasteFile('summer_3.jpeg')
+print(photos)
+
+photos.deleteFile('summer_1.jpg')
 print(photos)
