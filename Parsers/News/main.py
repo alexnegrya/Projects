@@ -1,4 +1,4 @@
-# News parser from hhtps://newsmaker.md
+# News titles parser from https://newsmaker.md
 
 import requests
 from bs4 import BeautifulSoup
