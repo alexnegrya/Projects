@@ -1,19 +1,20 @@
 import requests
 from os import system
 
+
 # Get user ip address, then country code
 def getCode():
     url = 'https://freegeoip.app/json/'
     res = requests.get(url)
     data = res.json()
+    if len(data) == 1: raise SystemExit(data['message'])
     c = data['country_code']
     return c
 
-def wait():
-    input('\nContinue... ')
+def wait(): input('\nContinue... ')
 
-def clr():
-    system('clear')
+def clr(): system('clear')
+
 
 while True:
     print(
@@ -26,7 +27,7 @@ while True:
     if option == '1' or option == '2':
         year = input('\nYear: ')
 
-        print('Waiting for a server responce... ')
+        print('Waiting for a server response... ')
         res = requests.get(f"https://date.nager.at/api/v2/PublicHolidays/{year}/{getCode()}")
         data = res.json()
         clr()
@@ -51,4 +52,3 @@ while True:
         print('Choose correct option!')
     wait()
     clr()
-

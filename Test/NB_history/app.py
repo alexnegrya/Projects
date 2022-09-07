@@ -1,7 +1,8 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-data = np.loadtxt('./Evolution.csv', delimiter=';', dtype=np.str0, skiprows=1, max_rows=356)
+data = np.loadtxt('Evolution.csv', delimiter=';', dtype=np.str0, skiprows=1,
+    max_rows=356)
 
 dates = []
 values = []

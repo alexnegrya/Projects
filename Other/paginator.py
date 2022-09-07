@@ -1,6 +1,7 @@
 from os import system
 from math import ceil
 
+
 l = [
     'Jacob',
     'Alvin',

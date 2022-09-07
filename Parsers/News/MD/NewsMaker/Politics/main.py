@@ -1,14 +1,13 @@
-# News parser from hhtps://newsmaker.md
-
 import requests
 from bs4 import BeautifulSoup
 
-# Getting and parsing data
+
+# Getting data
 url = f'https://newsmaker.md/rus/novosti/category/read/politika/'
 res = requests.get(url)
 soup = BeautifulSoup(res.text, 'html.parser')
 
-# Finding news and remember titles
+# Parsing news and saving titles
 news = soup.find_all('article', class_='evo-post')
 titles = []
 for i in range(len(news)):
@@ -16,7 +15,7 @@ for i in range(len(news)):
     title = str(result['title'])
     titles.append(title)
 
-# Print titles
+# Printing titles
 number = 1
 for title in titles:
     print(f'\n{number}. {title}')

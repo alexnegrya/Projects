@@ -18,6 +18,7 @@ class PersonBirthday:
     def year(self):
         return self.__year
 
+
 def clear(wait=None):
     if wait != None:
         input('\nНажмите ENTER чтобы продолжить... ')

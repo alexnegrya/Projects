@@ -1,41 +1,24 @@
 class File:
-    def __init__(self, name: str):
-        self.name = name
+    def __init__(self, name: str): self.name = name
     
-    def __str__(self):
-        return f"<File '{self.name}'>"
+    def __str__(self) -> str: return f"<File '{self.name}'>"
     
-    def __repr__(self):
-        return str(self)
+    def __repr__(self) -> str: return str(self)
 
 
 class Directory:
     def __init__(self, name: str, *content):
-        self.name = name
-        self.content = content
+        self.name, self.content = name, content
     
-    def __str__(self):
-        return f"<Dir '{self.name}'>"
+    def __str__(self) -> str: return f"<Dir '{self.name}'>"
     
-    def __repr__(self):
-        return str(self)
+    def __repr__(self) -> str: return str(self)
     
-    def get_content(self) -> list:
-        return self.content
-    
-    def get_dirs(self) -> list:
-        dirs = []
-        for content in self.content:
-            if type(content) == Directory:
-                dirs.append(content)
-        return dirs
+    def get_dirs(self) -> list: return [content for content in self.content \
+        if type(content) == Directory]
 
-    def get_files(self) -> list:
-        files = []
-        for content in self.content:
-            if type(content) == File:
-                files.append(content)
-        return files
+    def get_files(self) -> list: return [content for content in self.content \
+        if type(content) == File]
 
 
 def walk(dir: Directory, path='.') -> str:
@@ -45,22 +28,18 @@ def walk(dir: Directory, path='.') -> str:
     # Basic case
     if len(files) > 0 and len(dirs) < 1: # files, no dirs
         s += '\n\t'
-        for file in files:
-            s += str(file) + '  '
+        for file in files: s += str(file) + '  '
         s += '\n'
     elif len(files) < 1 and len(dirs) < 1: # no files, no dirs
         s += '\n\t<Empty dir>'
     # Recursive case
     elif len(files) > 0 and len(dirs) > 0: # files, dirs
         s += '\n\t'
-        for file in files:
-            s += str(file) + '  '
-        for d in dirs:
-            s += '\n' + walk(d, f'{path}/{d.name}')
+        for file in files: s += str(file) + '  '
+        for d in dirs: s += '\n' + walk(d, f'{path}/{d.name}')
         s += '\n'
     elif len(files) < 1 and len(dirs) > 0: # no files, dirs
-        for d in dirs:
-            s += '\n' + walk(d, f'{path}/{d.name}')
+        for d in dirs: s += '\n' + walk(d, f'{path}/{d.name}')
         s += '\n'
     return s
 

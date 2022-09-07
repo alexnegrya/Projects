@@ -52,3 +52,6 @@ def send_email(sender, recipients, subject, sender_name, html_file_path=None, ht
     mail.login(sender, password)
     mail.sendmail(sender, recipients, msg.as_string())
     mail.quit()
+
+
+print('This module for view only')

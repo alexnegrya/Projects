@@ -1,6 +1,7 @@
 import requests
 from clear import clear
 
+
 while True:
     try:
         text = input('Enter english text: ')

@@ -1,18 +1,16 @@
 from dates import *
 
+
 while True:
     clear()
     print('Введите дату в формате ДД.ММ.ГГГГ (например 01.январь.2000)')
     data = input('\n>>> ')
-    error('Дата введена в неправильном формате!')
-    continue
     try:
         spl = data.split('.')
         _day = int(spl[0])
         _month = spl[1]
         for i in range(1, 13):
-            if _month == months[i]:
-                _month_number = i
+            if _month == months[i]: _month = i
         _year = int(spl[2])
         if _year in range(1900, year):
             if _year % 400 == 0:
@@ -49,7 +47,7 @@ while True:
         else:
             error(f'Поддерживаются года с 1900, меньше текущего года, введен {_year} год!')
             continue
-    except:
+    except Exception as e:
         error('Дата введена в неправильном формате!')
         continue
     further = None
@@ -67,3 +65,5 @@ while True:
             break
     if back:
         continue
+
+    # Some functional next...
